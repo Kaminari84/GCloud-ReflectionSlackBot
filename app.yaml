@@ -1,0 +1,16 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+
+runtime_config:
+  python_version: 3
+
+env_variables:
+  BOT_ID: U6A0Y9TUL
+  SLACK_BOT_TOKEN: xoxb-214032333972-e7rCWPStF1RXSLTothAXL7b4l
+  # Replace user, password, database, and instance connection name with the values obtained
+  # when configuring your Cloud SQL instance.
+  SQLALCHEMY_DATABASE_URI: >-
+    mysql+pymysql://root:Fukuzatsu@/bot_db?unix_socket=/cloudsql/bot-test-174121:us-central1:bot-cloud-sql
+beta_settings:
+    cloud_sql_instances: bot-test-174121:us-central1:bot-cloud-sql
